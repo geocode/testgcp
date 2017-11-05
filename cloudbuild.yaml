@@ -1,0 +1,9 @@
+steps:
+  - name: "gcr.io/cloud-builders/go"
+    args: ["install", "github.com/geocode/testgcp"]
+    env: ["PROJECT_ROOT=github.com/geocode/testgcp"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/firsttestproject-161121/testgcp:$REVISION_ID", "-f", "Dockerfile", "."]
+images:
+  - "gcr.io/firsttestproject-161121/testgcp:$REVISION_ID"
+
